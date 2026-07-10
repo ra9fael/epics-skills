@@ -158,7 +158,6 @@ install_skills() {
 
     # ── Install each skill ────────────────────────────────────
     local count=0
-    local skipped=0
     for skill_dir in "$SOURCE_DIR"/*/; do
         local skill_name
         skill_name="$(basename "$skill_dir")"
@@ -182,7 +181,7 @@ install_skills() {
                 ln -s "$skill_dir" "$target_skill_dir"
                 ;;
         esac
-        ((count++))
+        count=$((count + 1))
     done
 
     echo "  ✔ Installed $count skills ($target)"
